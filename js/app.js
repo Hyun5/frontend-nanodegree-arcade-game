@@ -134,8 +134,13 @@ const modal = document.querySelector('.game-over-modal');
 function wonGame() {
   modal.innerHTML = `
   <h1 class="heading-one">Congrats! You won!</h1>
-  <p class="new-game">Would you like to play again?</p>
-  <P class="reload">Please reload your web browser.</P>
+  <P class="reload">Would you like to try again?</P>
+  <i class="fas fa-redo-alt restart" onclick="reloadBrowser()"></i>
   `;
   modal.classList.remove('display-none');
+}
+
+// Reload browser to start new game
+function reloadBrowser() {
+    location.reload();
 }
