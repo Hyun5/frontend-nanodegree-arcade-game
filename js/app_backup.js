@@ -104,6 +104,10 @@ class Hero {
   }
 }
 
+// Player.prototype.update = function(dt) {
+// };
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -115,6 +119,8 @@ const bug3 = new Enemy((-101*2.5), 83*2, 100);
 const bug4 = new Enemy((-101*1.5), 83*3, 200);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3,bug4);
+// console.log(allEnemies);
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -130,12 +136,49 @@ document.addEventListener('keyup', function(e) {
 });
 
 const modal = document.querySelector('.game-over-modal');
+const replay = document.querySelector('.restart');
+const restart = document.querySelector('.restart');
+
+
+function resetGame() {
+  player.reset();
+  allEnemies.length = 0;
+  bug1.delete;
+  bug2.delete;
+  bug3.delete;
+  bug4.delete;
+}
 
 function wonGame() {
+  allEnemies.length = 0;
   modal.innerHTML = `
   <h1 class="heading-one">Congrats! You won!</h1>
   <p class="new-game">Would you like to play again?</p>
-  <P class="reload">Please reload your web browser.</P>
+  <i class="fas fa-redo-alt restart" onclick="newGame()"></i>
   `;
   modal.classList.remove('display-none');
+// newGame();
 }
+
+
+function newGame() {
+  resetGame();
+  modal.classList.add('display-none');
+  modal.innerHTML = `<i class="fas fa-redo-alt restart"></i>`;
+  // player.reset();
+  player.victory = false;
+  // allEnemies = [];
+  allEnemies.push(bug1,bug2,bug3,bug4);
+  // win.requestAnimationFrame(main);
+
+  //
+  // replay.addEventListener('click', function() {
+  //   modal.classList.toggle('hide');
+  //   player.reset();
+  //   player.victory = false;
+  //   win.requestAnimationFrame(main);
+  // });
+}
+
+
+newGame();
