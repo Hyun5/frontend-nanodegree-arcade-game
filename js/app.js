@@ -56,12 +56,13 @@ class Hero {
 
     render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+      console.log(this.x, this.y);
     }
 
     handleInput(input) {
         switch (input) {
           case "up":
-            if (this.y > this.jump) {
+            if (this.y > this.jump - 83) {
               this.y -= this.jump;
             }
             break;
@@ -91,7 +92,8 @@ class Hero {
     }
     // Check win
       // Did player x and y reach final tile?
-      if(this.y === 55) {
+      if(this.y === -28) {
+        console.log(this.y);
         this.victory = true;
         wonGame();
       }
